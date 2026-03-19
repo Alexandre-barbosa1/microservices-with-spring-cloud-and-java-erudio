@@ -10,7 +10,7 @@ public class MathController {
     @RequestMapping("/sum/{numberOne}/{numberTwo}")
     public Double sum(
             @PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo) {
-        if (!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new IllegalArgumentException();
+        if (!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new UnsupportedOperationException("please set a numeric value");
         return convertToDouble(numberOne) + convertToDouble(numberTwo);
     }
 
@@ -21,7 +21,7 @@ public class MathController {
     }
 
     private Double convertToDouble(String str) throws IllegalArgumentException {
-        if (str == null || str.isEmpty()) throw new IllegalArgumentException();
+        if (str == null || str.isEmpty())throw new UnsupportedOperationException("please set a numeric value");
         String number = str.replaceAll(",", ".");
         return Double.parseDouble(number);
     }
