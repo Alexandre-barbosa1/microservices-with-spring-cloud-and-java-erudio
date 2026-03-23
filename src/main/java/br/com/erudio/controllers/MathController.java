@@ -13,6 +13,24 @@ public class MathController {
         if (!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new UnsupportedOperationException("please set a numeric value");
         return convertToDouble(numberOne) + convertToDouble(numberTwo);
     }
+    @RequestMapping("/dim/{numberOne}/{numberTwo}")
+    public double dim(
+            @PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo) {
+        if (!isNumeric(numberOne) || !isNumeric(numberTwo)) throw  new UnsupportedOperationException(("please set a numeric value"));
+        return convertToDouble(numberOne) - convertToDouble(numberTwo);
+    }
+    @RequestMapping("/mult/{numberOne}/{numberTwo}")
+    public double multi(
+            @PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo) {
+            if(!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new UnsupportedOperationException(("please set a numeric value"));
+            return convertToDouble(numberOne) * convertToDouble(numberTwo);
+    }
+    @RequestMapping("/div/{numberOne}/{numberTwo}")
+    public double div(
+            @PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo) {
+        if(!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new UnsupportedOperationException(("please  set a numeric value"));
+        return convertToDouble(numberOne) / convertToDouble(numberTwo);
+    }
 
     private boolean isNumeric(String str) {
         if (str == null || str.isEmpty()) return false;
