@@ -1,1 +1,24 @@
-spring.application.name=rest-with-spring-boot-and-java-erudio
+spring:
+  application:
+    name: rest-with-spring-boot-and-java-erudio
+
+  datasource:
+    # Driver oficial da Microsoft para SQL Server
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+    # URL corrigida: usa ';' como separador e especifica o banco de dados corretamente
+    # O parâmetro trustServerCertificate=true é vital para conexões locais sem SSL configurado
+    url: jdbc:sqlserver://localhost:1433;databaseName=rest_with_spring_boot_erudio;encrypt=true;trustServerCertificate=true;
+
+    username: sa
+    password: "14785296" # Coloquei entre aspas para garantir que o YAML leia como string
+
+  jpa:
+    # O hibernate.dialect não é estritamente necessário no Hibernate 7+,
+    # mas ajuda a garantir que ele use as funções corretas do SQL Server
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+    hibernate:
+      ddl-auto: update # Cria/Atualiza as tabelas automaticamente no banco
+    show-sql: true # Mostra as queries no console para você acompanhar seu estudo
